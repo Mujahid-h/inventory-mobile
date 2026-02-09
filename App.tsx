@@ -1,58 +1,40 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
+ * Root of the app.
+ * Shows Signup first, then bottom tabs (Home, Stock, Suppliers, Finance).
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { useEffect } from 'react';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import React, { useEffect } from 'react';
+import { StatusBar, useColorScheme } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { enableScreens } from 'react-native-screens';
 import BootSplash from 'react-native-bootsplash';
+import { RootNavigator } from './src/navigation/RootNavigator';
+
+enableScreens();
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   useEffect(() => {
     const init = async () => {
-      // …do multiple sync or async tasks
+      // …do multiple sync or async tasks (e.g. load user, config, etc.)
     };
 
     init().finally(async () => {
       await BootSplash.hide({ fade: true });
-      console.log('BootSplash has been hidden successfully');
+      // BootSplash has been hidden
     });
   }, []);
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor="#05090a"
+      />
+      <RootNavigator />
     </SafeAreaProvider>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
