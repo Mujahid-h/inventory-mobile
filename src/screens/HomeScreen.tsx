@@ -11,7 +11,8 @@ import { QuickActions } from '../components/QuickActions';
 
 export function HomeScreen() {
 
-  const { width } = Dimensions.get('window');
+  const { width, height } = Dimensions.get('window');
+
 
   return (
     <View style={styles.container}>
@@ -152,7 +153,6 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 10,
     height: 200,
-    backgroundColor: "lineargradient(#13ec80, #fff)"
   },
   card: {
     width: 280,
