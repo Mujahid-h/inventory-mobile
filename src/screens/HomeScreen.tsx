@@ -15,7 +15,7 @@ export function HomeScreen() {
 
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <Image
           source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkY36XkesV2esKBb7ds9iQinTHYG9R8pOGqQ&s' }}
@@ -107,13 +107,13 @@ export function HomeScreen() {
 
       <SalesChart />
       <QuickActions />
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     paddingHorizontal: 10,
     paddingVertical: 10,
     backgroundColor: '#102219',
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: 280,
-    height: 160,
+    height: 200,
     borderRadius: 16,
     padding: 16,
     justifyContent: 'space-between',

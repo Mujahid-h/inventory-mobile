@@ -1,33 +1,33 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
+import Header from '../components/SupplierHeader';
+import SearchBar from '../components/SearchBar';
+import FilterTabs from '../components/FilterTabs';
+import SupplierCard from '../components/SupplierCard';
+import { suppliers } from '../data/suppliers';
+import { colors } from '../theme/colors';
 
 export function SuppliersScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Suppliers</Text>
-      <Text style={styles.subtitle}>
-        Track suppliers, contacts, and purchase orders here.
-      </Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Header />
+      <SearchBar />
+      <FilterTabs />
+
+      <FlatList
+        data={suppliers}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => <SupplierCard supplier={item} />}
+        showsVerticalScrollIndicator={false}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: 32,
-    backgroundColor: '#05090a',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#ffffff',
-  },
-  subtitle: {
-    marginTop: 8,
-    fontSize: 14,
-    color: '#9ea3b0',
+    backgroundColor: colors.background,
+    padding: 10,
   },
 });
-

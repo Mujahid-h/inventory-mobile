@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { LineChart, Grid } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 
 export default function SalesChart() {
     const sales = [20, 35, 28, 40, 32, 50];
     const expenses = [15, 20, 18, 25, 22, 30];
+    const { width, height } = Dimensions.get('window');
+
 
     return (
         <View style={styles.card}>
@@ -48,9 +50,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#162b22',
         borderRadius: 16,
         padding: 16,
-        marginTop: 10,
-        borderWidth: 0.5,
+        marginTop: 20,
+        borderWidth: 1,
         borderColor: '#13ec80',
+        height: "40%",
+        flex: 1
     },
     row: {
         flexDirection: 'row',

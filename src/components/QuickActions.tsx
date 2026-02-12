@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export function QuickActions() {
+    const { width, height } = Dimensions.get('window');
+
     return (
         <View style={qa.container}>
             <Text style={qa.heading}>Quick Actions</Text>
@@ -18,12 +20,12 @@ export function QuickActions() {
 
 function ActionCard({ icon, label, color }) {
     return (
-        <View style={qa.card}>
+        <TouchableOpacity style={qa.card}>
             <View style={[qa.iconBox, { backgroundColor: `${color}22` }]}>
                 <Ionicons name={icon} size={20} color={color} />
             </View>
             <Text style={qa.label}>{label}</Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 
@@ -31,6 +33,8 @@ function ActionCard({ icon, label, color }) {
 const qa = StyleSheet.create({
     container: {
         marginTop: 20,
+        marginBottom: 40
+
     },
     heading: {
         color: '#fff',
@@ -45,12 +49,13 @@ const qa = StyleSheet.create({
     },
     card: {
         width: '48%',
+        height: "50%",
         backgroundColor: '#162b22',
         borderRadius: 14,
         padding: 16,
         alignItems: 'center',
         borderWidth: 0.3,
-        borderColor: '#13ec80',
+        // borderColor: '#13ec80',
     },
     iconBox: {
         width: 40,
